@@ -11,6 +11,11 @@ namespace Walkthrough
     /// </remarks>
     public class ProjectPhoenix : IExternalApplication
     {
+        public Result OnShutdown(UIControlledApplication application)
+        {
+            throw new NotImplementedException();
+        }
+
         // Both OnStartup and OnShutdown must be implemented as public method
         public Result OnStartup(UIControlledApplication application)
         {

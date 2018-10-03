@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Name>Project_Phoenix</Name>
+    <Assembly>ProjectPhoenixExport.dll</Assembly>
+    <FullClassName>ProjectPhoenixEport.GBXMLexportCommand</FullClassName>
+    <ClientId>ff4750d5-8060-41f9-8804-b1f587031655</ClientId>
+    <VendorId>Griffin</VendorId>
+    <VendorDescription>BRPLUSA, brplusa.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

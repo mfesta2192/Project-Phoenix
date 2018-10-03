@@ -15,7 +15,6 @@ namespace Project_Phoenix
 
     public class ProjectPhoenixExportCommand : IExternalCommand
     {
-
         public Result Execute(
             ExternalCommandData commandData, 
             ref string message, 
