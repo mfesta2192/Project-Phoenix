@@ -9,7 +9,7 @@ namespace Walkthrough
     /// <remarks>
     /// This application's main class. The class must be Public.
     /// </remarks>
-    public class CsAddPanel : IExternalApplication
+    public class ProjectPhoenix : IExternalApplication
     {
         // Both OnStartup and OnShutdown must be implemented as public method
         public Result OnStartup(UIControlledApplication application)
