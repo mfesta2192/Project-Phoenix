@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Project_Phoenix</RootNamespace>
     <AssemblyName>Project Phoenix</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,15 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
       <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,34 +55,12 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExportToGBXML.cs" />
-    <Compile Include="gbXML_Objects\Area.cs" />
-    <Compile Include="gbXML_Objects\Building.cs" />
-    <Compile Include="gbXML_Objects\CADMaterialId.cs" />
-    <Compile Include="gbXML_Objects\CADObjectId.cs" />
-    <Compile Include="gbXML_Objects\Campus.cs" />
-    <Compile Include="gbXML_Objects\CartesianPoint.cs" />
-    <Compile Include="gbXML_Objects\Gap.cs" />
-    <Compile Include="gbXML_Objects\ClosedShell.cs" />
-    <Compile Include="gbXML_Objects\gbXML.cs" />
-    <Compile Include="gbXML_Objects\Glaze.cs" />
-    <Compile Include="gbXML_Objects\HighLimit.cs" />
-    <Compile Include="gbXML_Objects\Layer.cs" />
-    <Compile Include="gbXML_Objects\LayersId.cs" />
-    <Compile Include="gbXML_Objects\Length.cs" />
-    <Compile Include="gbXML_Objects\Material.cs" />
-    <Compile Include="gbXML_Objects\MaterialId.cs" />
-    <Compile Include="gbXML_Objects\SpaceBoundary.cs" />
-    <Compile Include="gbXML_Objects\gbXMLExport.cs" />
+    <Compile Include="BasicSerialization.cs" />
+    <Compile Include="gbXMLClasses.cs" />
     <Compile Include="CsAddPanel.cs" />
-    <Compile Include="gbXML_Objects\MEPSpaceConstruction.cs" />
-    <Compile Include="ProjectPhoenixExportCommand.cs" />
+    <Compile Include="GBXMLexportCommand.cs" />
+    <Compile Include="prod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="gbXML_Objects\Space.cs" />
-    <Compile Include="gbXML_Objects\Surface.cs" />
-    <Compile Include="gbXML_Objects\Units.cs" />
-    <Compile Include="gbXML_Objects\Volume.cs" />
-    <Compile Include="gbXML_Objects\WindowType.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,7 +71,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PPE.ADDIN" />
+    <None Include="PPE.ADDIN">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Button_Export.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -99,8 +83,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="gbXML_Objects\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>%25appdata%25\Autodesk\Revit\Addins\2017</PostBuildEvent>
+    <PostBuildEvent>echo $(AppData)\Autodesk\Revit\Addins\2017\
+xcopy /E /Y /D "$(TargetDir)*" $(AppData)\Autodesk\Revit\Addins\2017\</PostBuildEvent>
   </PropertyGroup>
 </Project>

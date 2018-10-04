@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.Attributes;
+using Application = Autodesk.Revit.ApplicationServices.Application;
 
 namespace Project_Phoenix
 {
@@ -13,7 +14,7 @@ namespace Project_Phoenix
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
 
-    public class ProjectPhoenixExportCommand : IExternalCommand
+    public class GBXMLexportCommand : IExternalCommand
     {
         public Result Execute(
             ExternalCommandData commandData, 
